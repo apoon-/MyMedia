@@ -1,0 +1,23 @@
+<h1> Most Popular Shows </h1>
+  <ul class="small-block-grid-5">  
+    <% @popshows.each do |show| %>
+      <li>
+        <%= link_to show_path(show['id']) do %>
+        <%= show['name'] %>
+        <%= image_tag("#{@config.base_url}w150#{show['poster_path']}") if show['poster_path'] %> 
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+<h1> Most Popular Shows </h1>
+  <ul class="small-block-grid-6">  
+    <% @topshows.each do |show| %>
+      <li>
+        <%= link_to show_path(show['id']) do %>
+        <%= show['name'] %>
+        <%= image_tag("#{@config.base_url}w150#{show['poster_path']}") if show['poster_path'] %> 
+        <% end %>
+      </li>
+    <% end %>
+  </ul>

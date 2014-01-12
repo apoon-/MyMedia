@@ -1,0 +1,18 @@
+== My Media Locker
+
+A concept for a media (TV Show, Movie, Books) scheduler that would tell you the next air date/screening/read time for your media and allow you to intelligently schedule your time to view them.
+
+Using
+
+* Rails 4
+
+* The Movie DB API via themoviedb gem
+
+To Do
+
+* Alot...
+* Users
+* Scheduling
+* Movies 
+* Books (Goodreads?)
+* Integration in GCal?
