@@ -1,4 +1,23 @@
 <%= image_tag("#{@config.base_url}w1920#{@show.backdrop_path}") if @show.backdrop_path %> 
 
 <h1><%= @show.name %></h1>
-<%= @show.overview %>
+  <%= @show.overview %>
+<% if @show.status == "Ended" %>
+  <h5>This series has ended </h5>
+<% else %>
+  <h2> Upcoming Episodes </h2>
+
+  <h3> Season <%= @num_of_seasons %> </h3>
+
+  <% if @future != [] %>
+    <% @future.each do |e| %>
+      <h5>Episode: <%= e['episode_number'] %> - <%= e['name'] %></h5>
+   </br>
+      Air Date: <%= e['air_date'] %> </br>
+      <%= e['overview'] %>
+      <hr>
+    <% end %>
+  <% else %>
+     No Upcoming Episodes Found
+  <% end %>
+<% end %>

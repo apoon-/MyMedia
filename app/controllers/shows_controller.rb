@@ -6,6 +6,15 @@ class ShowsController < ApplicationController
 
   def show
     @show = Tmdb::TV.detail(params[:id])
+    next_episode(@show)
+  end
+
+  def next_episode(show)
+    @num_of_seasons = show.seasons.last["season_number"]
+    @series = Tmdb::Season.detail(params[:id], @num_of_seasons)["episodes"]
+    @date = (Time.now - 86400).strftime('%Y-%m-%d')
+
+    @future = @series.select {|s| s["air_date"] > @date}
   end
 
   private
