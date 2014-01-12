@@ -1,0 +1,51 @@
+</br>
+<%= form_tag("/search_movies", method: "get") do %>
+  <%= text_field_tag(:s, nil, placeholder: 'Search Movies') %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<h1> Now Playing </h1>
+<ul class="small-block-grid-5">  
+  <% @now_movies[0..9].each do |movie| %>
+    <li>
+      <%= link_to movie_path(movie['id']) do %>
+      <%= image_tag("#{@config.base_url}w300#{movie['poster_path']}") if movie['poster_path'] %> 
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<h1> Upcoming Movies </h1>
+<ul class="small-block-grid-5">  
+  <% @up_movies[0..9].each do |movie| %>
+    <li>
+      <%= link_to movie_path(movie['id']) do %>
+      <%= image_tag("#{@config.base_url}w300#{movie['poster_path']}") if movie['poster_path'] %> 
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+
+<h1> Top Rated Movies </h1>
+<ul class="small-block-grid-10">  
+  <% @top_movies.each do |movie| %>
+    <li>
+      <%= link_to movie_path(movie['id']) do %>
+      <%= image_tag("#{@config.base_url}w150#{movie['poster_path']}") if movie['poster_path'] %> 
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<h1> Most Popular Movies </h1>
+<ul class="small-block-grid-10">  
+  <% @pop_movies.each do |movie| %>
+    <li>
+      <%= link_to movie_path(movie['id']) do %>
+      <%= image_tag("#{@config.base_url}w150#{movie['poster_path']}") if movie['poster_path'] %> 
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+

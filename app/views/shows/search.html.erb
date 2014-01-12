@@ -1,0 +1,15 @@
+<h1> Search Results for "<%= params[:s] %>" </h1>
+
+<ul class="small-block-grid-5">
+  <% @result.each do |r| %>
+  <li>
+    <div class="panel">
+    <%= link_to show_path(r.id) do %>
+      <%= r.name %>
+      <%= image_tag("#{@config.base_url}w150#{r.poster_path}") if r.poster_path %>
+    <% end %> 
+    </div>
+  </li>
+  <% end %>
+</ul>
+

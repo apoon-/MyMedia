@@ -1,7 +1,7 @@
 class ShowsController < ApplicationController
   def index
-    @popshows = Tmdb::TV.popular
-    @topshows = Tmdb::TV.top_rated
+    @pop_shows = Tmdb::TV.popular
+    @top_shows = Tmdb::TV.top_rated
   end
 
   def show
@@ -14,7 +14,15 @@ class ShowsController < ApplicationController
     @series = Tmdb::Season.detail(params[:id], @num_of_seasons)["episodes"]
     @date = (Time.now - 86400).strftime('%Y-%m-%d')
 
-    @future = @series.select {|s| s["air_date"] > @date}
+    @future = @series.select {|s| 
+      unless s['air_date'] == nil
+        s["air_date"] > @date
+      end
+    }
+  end
+
+  def search
+    @result = Tmdb::TV.find(params[:s])
   end
 
   private

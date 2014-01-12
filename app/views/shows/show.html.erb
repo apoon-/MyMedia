@@ -1,7 +1,13 @@
 <%= image_tag("#{@config.base_url}w1920#{@show.backdrop_path}") if @show.backdrop_path %> 
 
-<h1><%= @show.name %></h1>
-  <%= @show.overview %>
+<h1><%= @show.name %> (<%= @show.first_air_date[0..3] %>) </h1>
+  <%= @show.overview %> </br>
+  Genre: 
+  <% @show.genres.each do |g| %>
+    <%= g['name'] %>
+  <% end %> </br>
+  Total # of Seasons: <%= @num_of_seasons %>
+
 <% if @show.status == "Ended" %>
   <h5>This series has ended </h5>
 <% else %>

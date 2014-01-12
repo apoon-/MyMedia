@@ -1,0 +1,30 @@
+<%= image_tag("#{@config.base_url}w1920#{@movie.backdrop_path}") if @movie.backdrop_path %> 
+
+<h1><%= @movie.title %></h1>
+Description: <%= @movie.overview %> </br>
+Genre: 
+  <% @movie.genres.each do |g| %>
+    <%= g['name'] %>
+  <% end %> </br>
+Budget: <%= number_to_currency(@movie.budget) %> </br>
+Released On: <%= @movie.release_date %>
+
+<h2> Trailer </h2>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/<%= @trailer["youtube"][0]['source'] %>
+" frameborder="0" allowfullscreen></iframe>
+
+<h2> Cast Members </h2>
+
+<ul class="small-block-grid-5">
+  <% @cast.each do |actor| %>
+  <li>
+    <%= actor['name'] %> as <%= actor['character'] %>
+    <% if actor["profile_path"] == nil %>
+      <br> No Image Available
+    <% else %>
+      <%= image_tag("#{@config.base_url}w150#{actor['profile_path']}")%> 
+    <% end %>
+  </li>
+  <% end %>
+</ul>

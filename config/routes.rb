@@ -1,7 +1,12 @@
 Mymedia::Application.routes.draw do
   resources :shows
+  resources :movies
 
   root 'shows#index'
+
+  get '/search_shows', to: 'shows#search', as: 'search_shows'
+
+  get '/search_movies', to: 'movies#search', as: 'search_movies'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

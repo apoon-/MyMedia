@@ -1,23 +1,28 @@
-<h1> Most Popular Shows </h1>
-  <ul class="small-block-grid-5">  
-    <% @popshows.each do |show| %>
-      <li>
-        <%= link_to show_path(show['id']) do %>
-        <%= show['name'] %>
-        <%= image_tag("#{@config.base_url}w150#{show['poster_path']}") if show['poster_path'] %> 
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
+</br>
+<%= form_tag("/search_shows", method: "get") do %>
+  <%= text_field_tag(:s, nil, placeholder: 'Search TV Shows') %>
+  <%= submit_tag("Search") %>
+<% end %>
 
-<h1> Most Popular Shows </h1>
-  <ul class="small-block-grid-6">  
-    <% @topshows.each do |show| %>
-      <li>
-        <%= link_to show_path(show['id']) do %>
-        <%= show['name'] %>
-        <%= image_tag("#{@config.base_url}w150#{show['poster_path']}") if show['poster_path'] %> 
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
+<h1> Top Rated TV Shows </h1>
+<ul class="small-block-grid-10">  
+  <% @top_shows.each do |show| %>
+    <li>
+      <%= link_to show_path(show['id']) do %>
+      <%= image_tag("#{@config.base_url}w150#{show['poster_path']}") if show['poster_path'] %> 
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<h1> Most Popular TV Shows </h1>
+<ul class="small-block-grid-5">  
+  <% @pop_shows[0..14].each do |show| %>
+    <li>
+      <%= link_to show_path(show['id']) do %>
+      <%= image_tag("#{@config.base_url}w300#{show['poster_path']}") if show['poster_path'] %> 
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
